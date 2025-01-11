@@ -1,0 +1,42 @@
+.dialog-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #3f51b5; /* Material primary color */
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5cm; /* Adds space between form groups */
+  padding: 1rem;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.cmcm; /* Adds space between fields */
+}
+
+.dialog-actions {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem; /* Adds space between buttons */
+}
+
+button {
+  font-size: 1rem;
+  padding: 0.5rem 1.5rem;
+}
+
+mat-form-field {
+  display: block;
+  margin-bottom: 1rem;
+}

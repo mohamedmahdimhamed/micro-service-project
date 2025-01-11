@@ -1,0 +1,90 @@
+/* Container and general form styles */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header section */
+h1 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* Button styling */
+.add-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  transition: background-color 0.3s, transform 0.2s;
+  font-weight: bold;
+}
+
+.add-button mat-icon {
+  font-size: 18px;
+}
+
+.add-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+}
+
+/* Table styles */
+.mat-elevation-z8 {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Header cell styles */
+.header-cell {
+  background-color: #f1f1f1;
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  color: #4a4a4a;
+  font-size: 14px;
+  border-bottom: 2px solid #ddd;
+}
+
+/* Table cell styles */
+.cell {
+  padding: 12px;
+  font-size: 14px;
+  color: #555;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Row hover effect */
+.row-hover:hover {
+  background-color: #f9f9f9;
+}
+
+/* Paginator */
+mat-paginator {
+  padding: 12px 0;
+  background-color: #f1f1f1;
+  border-top: 2px solid #ddd;
+}
+
+/* Striped table rows */
+.table-striped tr:nth-child(odd) {
+  background-color: #fafafa;
+}
+
+/* Styling for empty values */
+.cell::before {
+  content: "-";
+  display: inline-block;
+  color: #bbb;
+}
