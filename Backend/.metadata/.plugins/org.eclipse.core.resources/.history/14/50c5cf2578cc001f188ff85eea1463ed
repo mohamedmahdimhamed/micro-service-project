@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':  # Cela applique la configuration CORS à toutes les routes
+            allowed-origins: "http://localhost:4200"  # Origine autorisée pour les requêtes CORS
+            allowed-methods: "*"  # Méthodes autorisées (GET, POST, etc.)
+            allowed-headers: "*"  # Tous les en-têtes sont autorisés
+            allow-credentials: true  # Autoriser les cookies et autres informations d'authentification
+      routes:
+        - id: student-service
+          uri: http://Mohamed-Mehdi-Computer.mshome.net:8080/api/student  # Utilisation du load balancer pour accéder au service
+          predicates:
+            - Path=/student-service/**  # La requête est dirigée vers le microservice correspondant

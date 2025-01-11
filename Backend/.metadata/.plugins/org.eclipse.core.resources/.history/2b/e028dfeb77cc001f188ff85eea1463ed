@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - AddResponseHeader=X-Response-Time, #{system.nanoTime()}  # Exemple de filtre par défaut
+      globalcors:
+        cors-configurations:
+          '[/**]':  # Appliquer la configuration CORS à toutes les routes
+            allowed-origins: "http://localhost:4200"  # Origine autorisée pour les requêtes CORS
+            allowed-methods: "*"  # Méthodes autorisées (GET, POST, etc.)
+            allowed-headers: "*"  # Tous les en-têtes sont autorisés
+            allow-credentials: true  # Autoriser les cookies et autres informations d'authentification
+      routes:
+        - id: student-service
+          uri: lb://student-service  # Utilisation du load balancer pour accéder au service
+          predicates:
+            - Path=/student-service/**  # La requête est dirigée vers le microservice correspondant
+          filters:
+            - RewritePath=/student-service/(?<remaining>.*), /${remaining}  # Réécrire le chemin pour le service
+            - CircuitBreaker=name=studentServiceCircuitBreaker,fallbackUri=forward:/fallback/student-service  # Gestion de circuit breaker
+            - Retry=5  # Réessayer 5 fois en cas d'échec
+        - id: fallback-service
+          uri: forward:/fallback  # Service de secours pour les erreurs
+          predicates:
+            - Path=/fallback/**  # Correspond à toutes les routes de secours
